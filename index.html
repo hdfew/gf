@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elite China Business | Закрытый курс для предпринимателей</title>
+    <style>
+        :root {
+            --bg: #0A0A0A;
+            --card: #1E1E1E;
+            --accent: #D4AF37;
+            --accent-light: #F5D78E;
+            --text: #F0F0F0;
+            --text-light: #AAAAAA;
+            --border: rgba(255,255,255,0.1);
+            --discount: #FFD700;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        body {
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            padding: 0;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 30%, rgba(30,30,30,0.8) 0%, rgba(10,10,10,1) 70%);
+            z-index: -1;
+        }
+        
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            padding: 40px 0 20px;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 30px;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+        
+        .tagline {
+            font-size: 14px;
+            color: var(--text-light);
+            letter-spacing: 0.5px;
+        }
+        
+        .card {
+            background: var(--card);
+            border-radius: 12px;
+            padding: 30px;
+            border: 1px solid var(--border);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            margin-bottom: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 60px;
+            height: 60px;
+            background: var(--accent);
+            opacity: 0.05;
+            border-radius: 0 12px 0 100%;
+        }
+        
+        h1 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            line-height: 1.3;
+            font-weight: 500;
+        }
+        
+        .accent {
+            color: var(--accent);
+            font-weight: 600;
+        }
+        
+        .price-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin: 25px 0;
+        }
+        
+        .price {
+            font-size: 32px;
+            font-weight: 600;
+            color: var(--accent);
+        }
+        
+        .old-price {
+            font-size: 18px;
+            color: var(--text-light);
+            text-decoration: line-through;
+            position: relative;
+        }
+        
+        .discount-badge {
+            background: var(--discount);
+            color: #000;
+            font-size: 14px;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 4px;
+            position: absolute;
+            top: -20px;
+            right: -10px;
+        }
+        
+        .benefits {
+            margin: 25px 0;
+        }
+        
+        .benefit {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+        
+        .benefit-icon {
+            color: var(--accent);
+            margin-right: 12px;
+            flex-shrink: 0;
+            font-size: 18px;
+        }
+        
+        .btn {
+            display: block;
+            width: 100%;
+            background: var(--accent);
+            color: #000;
+            text-align: center;
+            padding: 16px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            margin-top: 25px;
+            transition: all 0.3s ease;
+            letter-spacing: 0.5px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        .btn:hover {
+            background: var(--accent-light);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+        }
+        
+        .testimonial {
+            background: rgba(255,255,255,0.03);
+            border-left: 3px solid var(--accent);
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .testimonial-author {
+            font-size: 14px;
+            color: var(--text-light);
+            margin-top: 10px;
+            font-style: italic;
+        }
+        
+        .section-title {
+            font-size: 18px;
+            margin: 30px 0 20px;
+            color: var(--accent);
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+        
+        .exclusive-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(212, 175, 55, 0.1);
+            color: var(--accent);
+            font-size: 12px;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 4px;
+            border: 1px solid var(--accent);
+        }
+        
+        .whatsapp-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: #25D366;
+            color: white;
+        }
+        
+        .whatsapp-btn:hover {
+            background: #2BB741;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+        }
+        
+        .guarantee {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 20px;
+            font-size: 14px;
+            color: var(--text-light);
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">ELITE CHINA BUSINESS</div>
+            <div class="tagline">Закрытый курс для состоятельных предпринимателей</div>
+        </div>
+        
+        <div class="card">
+            <div class="exclusive-badge">ЭКСКЛЮЗИВ</div>
+            <h1>Ваш личный <span class="accent">китайский бизнес-консультант</span> в кармане</h1>
+            <p style="color: var(--text-light); font-size: 15px; line-height: 1.5;">Доступ к закрытой сети проверенных поставщиков и партнеров в Китае</p>
+            
+            <div class="price-container">
+                <div style="position: relative;">
+                    <div class="old-price">375 000 ₸</div>
+                    <div class="discount-badge">-20%</div>
+                </div>
+                <div class="price">300 000 ₸</div>
+            </div>
+            
+            <div class="benefits">
+                <div class="benefit">
+                    <div class="benefit-icon"><i class="fas fa-gem"></i></div>
+                    <div>
+                        <div style="font-weight: 500;">VIP-доступ к базе поставщиков</div>
+                        <div style="font-size: 13px; color: var(--text-light); margin-top: 3px;">Проверенные фабрики с личными контактами менеджеров</div>
+                    </div>
+                </div>
+                <div class="benefit">
+                    <div class="benefit-icon"><i class="fas fa-user-tie"></i></div>
+                    <div>
+                        <div style="font-weight: 500;">Персональные консультации</div>
+                        <div style="font-size: 13px; color: var(--text-light); margin-top: 3px;">С членами торговой палаты и экспертами по Китаю</div>
+                    </div>
+                </div>
+                <div class="benefit">
+                    <div class="benefit-icon"><i class="fas fa-file-contract"></i></div>
+                    <div>
+                        <div style="font-weight: 500;">Готовые юридические решения</div>
+                        <div style="font-size: 13px; color: var(--text-light); margin-top: 3px;">Шаблоны контрактов и документов на китайском языке</div>
+                    </div>
+                </div>
+            </div>
+            
+            <button class="btn whatsapp-btn" onclick="window.location.href='https://wa.me/номертелефона'">
+                <i class="fab fa-whatsapp"></i> Обсудить курс в WhatsApp
+            </button>
+            
+            <div class="guarantee">
+                <i class="fas fa-shield-alt" style="color: var(--accent);"></i>
+                <span>Конфиденциальность и индивидуальный подход гарантированы</span>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="section-title">Для кого этот курс</div>
+            <p style="margin-bottom: 15px; line-height: 1.6; font-size: 15px;">Этот курс создан для предпринимателей, которые:</p>
+            <ul style="list-style: none;">
+                <li style="margin-bottom: 12px; padding-left: 25px; position: relative;">
+                    <span style="position: absolute; left: 0; color: var(--accent);">•</span>
+                    Уже ведут бизнес с Китаем и хотят оптимизировать процессы
+                </li>
+                <li style="margin-bottom: 12px; padding-left: 25px; position: relative;">
+                    <span style="position: absolute; left: 0; color: var(--accent);">•</span>
+                    Планируют крупные закупки или совместные проекты
+                </li>
+                <li style="margin-bottom: 12px; padding-left: 25px; position: relative;">
+                    <span style="position: absolute; left: 0; color: var(--accent);">•</span>
+                    Ценят время и готовы платить за проверенные решения
+                </li>
+            </ul>
+        </div>
+        
+        <div class="card">
+            <div class="section-title">Реальные результаты</div>
+            
+            <div class="testimonial">
+                <p>"Благодаря курсу нашел фабрику-производителя мебели, что позволило сократить закупочную цену на 35%. Личный контакт с директором фабрики решил все вопросы по логистике."</p>
+                <div class="testimonial-author">— Арман Ж., группа компаний "АстанаХолдинг"</div>
+            </div>
+            
+            <div class="testimonial">
+                <p>"Консультация с экспертом по китайскому праву спасла наш контракт на $200,000. Теперь у нас есть проверенный юрист в Шанхае."</p>
+                <div class="testimonial-author">— Айгуль С., "Premium Textiles"</div>
+            </div>
+        </div>
+        
+        <div class="card" style="text-align: center;">
+            <div class="section-title" style="text-align: left;">Начните сейчас</div>
+            <p style="margin-bottom: 20px; line-height: 1.6;">Оставьте заявку для беседы с нашим консультантом</p>
+            <button class="btn whatsapp-btn" onclick="window.location.href='https://wa.me/номертелефона'">
+                <i class="fab fa-whatsapp"></i> Написать в WhatsApp
+            </button>
+            <div class="guarantee" style="justify-content: center; margin-top: 15px;">
+                <i class="fas fa-lock" style="color: var(--accent);"></i>
+                <span>Все переговоры строго конфиденциальны</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
